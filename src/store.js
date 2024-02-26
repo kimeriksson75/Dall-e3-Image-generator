@@ -1,6 +1,7 @@
 // store.js
 import { createStore } from "vuex";
-const apiURL = "http://192.168.0.121:3000/api/v1";
+const server = process.env.VUE_APP_API_BASE_URL || "http://localhost:3000";
+const version = process.env.VUE_APP_VERSION || "v1";
 export const store = createStore({
   state: {
     isLoggedIn: false,
@@ -39,22 +40,25 @@ export const store = createStore({
     async loginUser({ commit }, user) {
       console.log({ user });
       try {
-        const response = await fetch(`${apiURL}/auth`, {
+        const response = await fetch(`${server}/api/${version}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(user),
         });
-        const data = await response.json();
         console.log(response);
         if (response.ok) {
+          const data = await response.json();
           commit("login", data);
+          return response;
         } else {
-          console.error(data);
+          console.error(response);
+          return response;
         }
       } catch (error) {
-        console.error(error);
+        console.error("catch", error);
+        return error;
       }
     },
     logoutUser({ commit }) {

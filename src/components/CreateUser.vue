@@ -1,33 +1,35 @@
-<!-- Login.vue (Login component) -->
 <template>
-  <form class="form" @submit.prevent="submit">
-    <label for="form.username">Username:</label>
-    <input type="text" required v-model="form.username" />
-    <label for="form.password">Password:</label>
-    <input type="password" required v-model="form.password" />
-    <button type="submit">Submit</button>
+  <form @submit.prevent="submit">
+    <label for="username">Username</label>
+    <input required type="text" id="username" v-model="form.username" />
+    <label for="email">Email</label>
+    <input required type="email" id="email" v-model="form.email" />
+    <label for="password">Password</label>
+    <input required type="password" id="password" v-model="form.password" />
+    <button type="submit">Create user</button>
   </form>
 </template>
 
 <script>
 export default {
-  name: "LoginComponent",
+  name: "CreateUser",
   data() {
     return {
       form: {
         username: "",
+        email: "",
         password: "",
       },
     };
   },
   methods: {
-    submit() {
+    async submit() {
       this.$emit("submit", this.form);
     },
   },
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 h1 {
   margin: 40px 0 0;
 }

@@ -40,6 +40,9 @@ const $toast = useToast();
 export default {
   name: "ImageGeneratorView",
   created() {
+    if (!this.$store.state.user) {
+      this.$router.push("/login");
+    }
     const { socket } = useSocketIO();
     this.socketInstance = socket;
     this.socketInstance.on("connect", () => {});
@@ -56,7 +59,7 @@ export default {
     this.socketInstance.on("generateImageInitiated", () => {
       $toast.open({
         message: `${this.description} is on its way!`,
-        type: "info",
+        type: "success",
         position: "bottom",
       });
     });
