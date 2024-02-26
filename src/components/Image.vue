@@ -7,6 +7,11 @@
     <q
       ><strong>{{ image?.description }}</strong></q
     >
+    <details v-if="image.revised_prompt">
+      <summary>Revised prompt</summary>
+      <p>{{ image.revised_prompt }}</p>
+      <p>Image link: {{ image.url }}</p>
+    </details>
   </div>
 </template>
 
@@ -50,6 +55,24 @@ export default {
     &:hover {
       background-color: rgba(0, 0, 0, 0.5);
     }
+  }
+
+  details {
+    margin-top: 8px;
+    padding: 12px 16px;
+    background-color: #42b983;
+    border-radius: 5px;
+    color: #fff;
+    summary {
+      list-style-position: outside;
+      margin-left: 12px;
+      padding-left: 8px;
+      list-style-type: "▶";
+      cursor: pointer;
+    }
+  }
+  details[open] > summary {
+    list-style-type: "▼";
   }
 }
 </style>
