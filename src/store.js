@@ -21,6 +21,11 @@ export const store = createStore({
       state.isLoggedIn = false;
       state.user = null;
     },
+    createdUser(state, user) {
+      state.isLoggedIn = false;
+      state.user = null;
+      console.log(`User ${user.username} has created an account`);
+    },
     addToPreviousImages(state, image) {
       state.previousImages = [...state.previousImages, image];
       localStorage.setItem(
@@ -47,17 +52,35 @@ export const store = createStore({
           },
           body: JSON.stringify(user),
         });
-        console.log(response);
+        const data = await response.json();
         if (response.ok) {
-          const data = await response.json();
           commit("login", data);
           return response;
         } else {
-          console.error(response);
-          return response;
+          console.error(data);
+          return data;
         }
       } catch (error) {
-        console.error("catch", error);
+        return error;
+      }
+    },
+    async createUser({ commit }, user) {
+      try {
+        const response = await fetch(`${server}/api/${version}/auth/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          commit("createdUser", data);
+          return response;
+        } else {
+          return data;
+        }
+      } catch (error) {
         return error;
       }
     },

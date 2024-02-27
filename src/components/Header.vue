@@ -3,7 +3,6 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/image-generator">Generate image</router-link>
-      <router-link to="/create-user">Create user</router-link>
     </nav>
     <div class="button-group">
       <User />

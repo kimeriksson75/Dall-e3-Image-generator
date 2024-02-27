@@ -1,5 +1,7 @@
 <!-- Logout.vue (Logout component) -->
 <template>
+  <router-link v-if="!isLoggedIn" to="/create-user">Create user</router-link>
+
   <button v-if="isLoggedIn" @click="logout">
     {{ `Logout ${user.username}` }}
   </button>
