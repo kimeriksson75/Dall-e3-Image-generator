@@ -4,6 +4,7 @@ const server = process.env.VUE_APP_API_BASE_URL || "http://localhost:3000";
 const version = process.env.VUE_APP_VERSION || "v1";
 export const store = createStore({
   state: {
+    hasNavigation: false,
     isLoggedIn: false,
     user: null,
     previousImages: localStorage.getItem("previousImages")
@@ -12,6 +13,10 @@ export const store = createStore({
     devtools: process.env.NODE_ENV === "development",
   },
   mutations: {
+    toggleNavigation(state, value = null) {
+      console.log("value", value);
+      state.hasNavigation = value ?? !state.hasNavigation;
+    },
     login(state, user) {
       state.isLoggedIn = true;
       state.user = user;
@@ -42,6 +47,9 @@ export const store = createStore({
     },
   },
   actions: {
+    toggleNavigation({ commit }, value) {
+      commit("toggleNavigation", value);
+    },
     async loginUser({ commit }, user) {
       console.log({ user });
       try {
@@ -97,6 +105,7 @@ export const store = createStore({
     },
   },
   getters: {
+    hasNavigation: (state) => state.hasNavigation,
     isLoggedIn: (state) => state.isLoggedIn,
     user: (state) => state.user,
     previousImages: (state) => state.previousImages,

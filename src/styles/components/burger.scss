@@ -1,0 +1,65 @@
+/* Menu Icon */
+.burger {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  cursor: pointer;
+  padding: 16px 8px;
+} /* Style label tag */
+
+.burger-line {
+  background: black;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+} /* Style span tag */
+
+.burger-line::before,
+.burger-line::after {
+  background: black;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+.burger-line::before {
+  top: 7px;
+}
+.burger-line::after {
+  top: -7px;
+}
+
+.side-menu {
+  display: none;
+} /* Hide checkbox */
+
+.side-menu:checked ~ nav {
+}
+.side-menu:checked ~ .burger .burger-line {
+  background: transparent;
+}
+.side-menu:checked ~ .burger .burger-line::before {
+  background: #c8c8c8;
+
+  transform: rotate(-45deg);
+  top: 0;
+}
+.side-menu:checked ~ .burger .burger-line::after {
+  background: #c8c8c8;
+
+  transform: rotate(45deg);
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  .burger {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+    display: none;
+  }
+}
