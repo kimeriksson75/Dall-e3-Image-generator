@@ -127,32 +127,36 @@ export default {
 </script>
 <style scoped lang="scss">
 .aside {
-  position: fixed;
-  left: 0px;
-  bottom: 42px;
+  position: absolute;
+  left: 12px;
+  top: 12px;
   width: 64px;
   height: 64px;
   transition: all 0.3s ease-in-out;
   overflow-y: hidden;
   max-width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
   svg {
     margin-bottom: 12px;
     animation: spin 12s linear infinite;
     cursor: pointer;
   }
   &-expanded {
-    left: 12px;
+    // left: 12px;
 
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid #ccc;
     border-radius: 5px;
 
-    animation: expandSideBar 0.3s ease-in-out forwards;
+    animation: expandSideBar 0.5s ease-in-out forwards;
     overflow-y: scroll;
   }
 
   &-collapsed {
-    animation: collapseSideBar 0.3s ease-in-out forwards;
+    animation: collapseSideBar 0.5s ease-in-out forwards;
   }
 }
 
@@ -168,29 +172,37 @@ export default {
 @keyframes expandSideBar {
   0% {
     width: 64px;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 0);
   }
   50% {
-    width: 64px;
-    height: calc(100dvh - 196px);
+    height: 64px;
+    width: 25vw;
+    background-color: rgba(255, 255, 255, 0.1);
   }
   100% {
-    width: 50vw;
     height: calc(100dvh - 196px);
+    width: 50vw;
+    background-color: rgba(255, 255, 255, 1);
   }
 }
 
 @keyframes collapseSideBar {
   0% {
+    background-color: rgba(255, 255, 255, 1);
+
     width: 50vw;
     height: calc(100dvh - 196px);
   }
   50% {
     width: 64px;
-    height: calc(100dvh - 196px);
+    height: calc(80dvh - 196px);
+    background-color: rgba(255, 255, 255, 1);
   }
   100% {
     width: 64px;
     height: 64px;
+    background-color: rgba(255, 255, 255, 0);
   }
 }
 

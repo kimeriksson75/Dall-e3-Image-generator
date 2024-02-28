@@ -4,12 +4,14 @@
     class="nav"
     :class="`${this.$store.state.hasNavigation ? 'nav-open' : ''}`"
   >
-    <router-link to="/">Home</router-link>
-    <router-link v-if="isLoggedIn" to="/image-generator"
+    <router-link class="link" to="/">Home</router-link>
+    <router-link class="link" v-if="isLoggedIn" to="/image-generator"
       >Generate image</router-link
     >
-    <router-link v-if="!isLoggedIn" to="/create-user">Create user</router-link>
-    <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
+    <router-link class="link" v-if="!isLoggedIn" to="/create-user"
+      >Create user</router-link
+    >
+    <router-link class="link" v-if="!isLoggedIn" to="/login">Login</router-link>
     <User />
     <ConnectionState />
   </nav>
@@ -44,4 +46,3 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>

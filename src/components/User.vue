@@ -1,8 +1,8 @@
 <!-- Logout.vue (Logout component) -->
 <template>
-  <button v-if="isLoggedIn" @click="logout">
+  <a class="link" v-if="isLoggedIn" @click="logout">
     {{ `Logout ${user.username}` }}
-  </button>
+  </a>
 </template>
 
 <script>
@@ -25,6 +25,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+a {
+  cursor: pointer;
+}
 button {
   background-color: transparent;
   color: #42b983;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="download">
     <p for="image">and</p>
     <button @click="downloadImage">Download image</button>
   </div>
@@ -35,11 +35,13 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-button {
-  width: 100%;
-  margin-bottom: 10px;
-}
-p {
-  margin-bottom: 10px;
+.download {
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 10px;
+  }
 }
 </style>
