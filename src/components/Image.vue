@@ -10,7 +10,7 @@
     <details v-if="image.revised_prompt">
       <summary>Revised prompt</summary>
       <p>{{ image.revised_prompt }}</p>
-      <p>Image link: {{ image.url }}</p>
+      <router-link :to="image.image">Image link:</router-link>
     </details>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
 .image-wrapper {
   position: relative;
   transition: all 0.3s ease-in-out;
-
+  margin: 0 auto;
   img {
     max-width: 100%;
     border-radius: 5px;
@@ -59,16 +59,15 @@ export default {
 
   details {
     margin-top: 8px;
-    padding: 12px 16px;
-    background-color: #42b983;
+    padding: 12px 4px;
     border-radius: 5px;
-    color: #fff;
     summary {
       list-style-position: outside;
-      margin-left: 12px;
-      padding-left: 8px;
       list-style-type: "▶";
       cursor: pointer;
+    }
+    p {
+      word-wrap: break-word;
     }
   }
   details[open] > summary {

@@ -28,10 +28,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-h1 {
-  margin: 40px 0 0;
-}
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,23 +38,23 @@ form {
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-label {
-  margin-bottom: 10px;
-}
-input {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-button {
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #42b983;
-  color: white;
-  cursor: pointer;
+  label {
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #42b983;
+    color: white;
+    cursor: pointer;
+  }
 }
 </style>

@@ -6,8 +6,8 @@
     <p>
       This has become my experimental area for learning Vue.js. Please try out
       the
-      <a href="/image-generator" target="_self" rel="noopener"
-        >image generator</a
+      <router-link to="/image-generator" target="_self" rel="noopener"
+        >image generator</router-link
       >
       and let me know what you think.
     </p>

@@ -25,15 +25,15 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-// button {
-//   background-color: transparent;
-//   color: #42b983;
-//   padding: 0;
-//   margin: 0;
+button {
+  background-color: transparent;
+  color: #42b983;
+  padding: 0;
+  margin: 0;
 
-//   &:hover {
-//     text-decoration: underline;
-//     background: transparent;
-//   }
-// }
+  &:hover {
+    text-decoration: underline;
+    background: transparent;
+  }
+}
 </style>
