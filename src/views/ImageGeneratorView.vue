@@ -1,5 +1,4 @@
 <template>
-  <h1>Image generator</h1>
   <div class="image-generator">
     <Image :image="image" @removeImage="removeImage" />
     <ImageGeneratorSideBar

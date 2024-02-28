@@ -6,7 +6,12 @@ header {
   margin: 0 auto;
   padding: 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 12px;
   align-items: center;
   border-bottom: 1px solid #eaeaea;
+
+  h1 {
+    text-align: center;
+  }
 }

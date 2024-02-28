@@ -60,6 +60,7 @@ export default {
   img {
     max-width: 100%;
     border-radius: 5px;
+    margin-bottom: 8px;
   }
   q {
     word-wrap: break-word;

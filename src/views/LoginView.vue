@@ -1,6 +1,5 @@
 <!-- LoginView.vue (Parent component) -->
 <template>
-  <h1>Login</h1>
   <Login @submit="handleSubmit" />
 </template>
 
