@@ -67,11 +67,24 @@ export default {
       );
     };
     autoHideSidebar();
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".aside")) {
+        this.expanded = false;
+      }
+    });
   },
   computed: {
     previousImages() {
       return this.$store.state.previousImages;
     },
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", (event) => {
+      if (!event.target.closest(".aside")) {
+        this.expanded = false;
+      }
+    });
   },
   methods: {
     toggleExpanded() {
@@ -142,7 +155,6 @@ export default {
       opacity: 1;
     }
   }
-
   &-collapsed {
     max-height: 0;
     max-width: 64px;
