@@ -23,11 +23,11 @@ export default {
   position: relative;
   margin: 0 auto;
   width: 80px;
-  height: 80px;
+  height: 40px;
 }
 .lds-ellipsis div {
   position: absolute;
-  top: 33px;
+  top: 12px;
   width: 13px;
   height: 13px;
   border-radius: 50%;

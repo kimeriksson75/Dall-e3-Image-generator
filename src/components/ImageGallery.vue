@@ -1,8 +1,5 @@
 <template>
   <div class="gallery">
-    <div class="gallery__header">
-      <p>or enjoy previous generated brilliance</p>
-    </div>
     <div class="gallery__images">
       <img
         v-for="image in previousImages"

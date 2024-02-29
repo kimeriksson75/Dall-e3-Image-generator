@@ -1,5 +1,9 @@
 <template>
   <div class="image-generator">
+    <ImageGeneratorTopBar
+      @generateImage="generateImage"
+      :isLoading="isLoading"
+    />
     <Image :image="image" @removeImage="removeImage" />
     <ImageGeneratorSideBar
       @generateImage="generateImage"
@@ -12,6 +16,7 @@
 
 <script>
 import Image from "@/components/Image.vue";
+import ImageGeneratorTopBar from "@/components/ImageGeneratorTopBar.vue";
 import ImageGeneratorSideBar from "@/components/ImageGeneratorSideBar.vue";
 import "vue-toast-notification/dist/theme-sugar.css";
 import { useToast } from "vue-toast-notification";
@@ -80,6 +85,7 @@ export default {
   components: {
     Image,
     ImageGeneratorSideBar,
+    ImageGeneratorTopBar,
   },
 
   data() {
@@ -128,6 +134,7 @@ export default {
 .image-generator {
   position: relative;
   display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 </style>
