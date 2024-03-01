@@ -1,5 +1,5 @@
 <template>
-  <div class="lds-ellipsis">
+  <div v-if="isLoading" class="lds-ellipsis">
     <div></div>
     <div></div>
     <div></div>

@@ -8,8 +8,8 @@
     <ImageGeneratorSideBar
       @generateImage="generateImage"
       @setSelectedImage="setSelectedImage"
-      :isLoading="isLoading"
       :image="image"
+      :isLoading="isLoading"
     />
   </div>
 </template>

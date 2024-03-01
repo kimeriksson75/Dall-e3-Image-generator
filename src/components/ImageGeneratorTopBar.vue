@@ -13,7 +13,7 @@
     <div class="button-group">
       <button type="submit" :disabled="isLoading">Go</button>
     </div>
-    <Loader v-if="isLoading" />
+    <Loader :isLoading="isLoading" />
   </form>
 </template>
 <script>
@@ -27,7 +27,7 @@ export default {
   props: {
     isLoading: {
       type: Boolean,
-      required: true,
+      required: false,
     },
     image: {
       type: Object,

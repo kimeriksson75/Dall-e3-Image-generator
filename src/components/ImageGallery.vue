@@ -45,6 +45,7 @@ export default {
     margin-bottom: 10px;
   }
   .gallery__images {
+    width: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 4px;
