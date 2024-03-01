@@ -4,8 +4,9 @@
     <v-lazy-image
       :class="`${isLoaded ? '' : 'v-lazy-image-load'}`"
       :src="image.image"
-      src-placeholder="https://placehold.co/1024x1024/888888/ffffff?text=Loading"
+      src-placeholder="https://placehold.co/1024x1024/42b983/ffffff?text=Image+goes+here"
       :onload="onImgLoaded"
+      :use-picture="false"
     />
     <div v-if="image?.image && isLoaded">
       <button @click="removeImage" class="remove-image">X</button>

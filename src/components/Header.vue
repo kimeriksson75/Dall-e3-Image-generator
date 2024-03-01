@@ -20,7 +20,7 @@ export default {
         home: "Home",
         login: "Login",
         "create-user": "Create User",
-        "image-generator": "Dall-e3 generator",
+        "image-generator": "Dall-e3",
       },
       currentRouteHeader: "",
     };

@@ -5,13 +5,16 @@ const version = process.env.VUE_APP_VERSION || "v1";
 export const store = createStore({
   state: {
     hasNavigation: false,
-    isLoggedIn: false,
-    user: null,
+    user: localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
+    isLoggedIn: !!localStorage.getItem("user"),
     previousImages: localStorage.getItem("previousImages")
       ? JSON.parse(localStorage.getItem("previousImages"))
       : [],
     devtools: process.env.NODE_ENV === "development",
   },
+
   mutations: {
     toggleNavigation(state, value = null) {
       console.log("value", value);
@@ -20,9 +23,11 @@ export const store = createStore({
     login(state, user) {
       state.isLoggedIn = true;
       state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
       console.log(`User ${user.username} has logged in`);
     },
     logout(state) {
+      localStorage.removeItem("user");
       state.isLoggedIn = false;
       state.user = null;
     },

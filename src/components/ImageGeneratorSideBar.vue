@@ -125,8 +125,8 @@ export default {
 .content {
   position: relative;
   display: flex;
-  top: 22px;
-  left: 8px;
+  top: 0;
+  left: 12px;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0);
@@ -150,6 +150,7 @@ export default {
 
     max-height: 100%;
     max-width: 100%;
+    top: 26px;
 
     .gallery {
       opacity: 1;
