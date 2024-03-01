@@ -4,7 +4,7 @@
       ><a href="https://openai.com/dall-e-3">Dall-e3</a> is listening</label
     >
     <input
-      type="search"
+      type="text"
       name="q"
       id="description"
       placeholder="e.g. oceans of love"
@@ -13,7 +13,7 @@
     />
     <div class="button-group">
       <button type="submit" :disabled="isLoading">Go</button>
-      <button type="reset" :disabled="!description">X</button>
+      <button v-if="!isLoading" type="reset" :disabled="!description">X</button>
     </div>
     <Loader :isLoading="isLoading" />
   </form>
@@ -93,8 +93,5 @@ input {
   border-radius: 5px;
   flex: 1;
   margin-left: 48px;
-}
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: searchfield-cancel-button;
 }
 </style>
