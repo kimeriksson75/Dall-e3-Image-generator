@@ -13,6 +13,7 @@
     />
     <div class="button-group">
       <button type="submit" :disabled="isLoading">Go</button>
+      <button type="reset" :disabled="!description">X</button>
     </div>
     <Loader :isLoading="isLoading" />
   </form>
@@ -65,6 +66,7 @@ form {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
   gap: 4px 12px;
   margin: 0 auto;
   width: 100%;
@@ -78,6 +80,7 @@ form {
   .button-group {
     display: flex;
     flex-direction: row;
+    gap: 8px;
   }
 }
 label {
@@ -90,5 +93,8 @@ input {
   border-radius: 5px;
   flex: 1;
   margin-left: 48px;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
 }
 </style>

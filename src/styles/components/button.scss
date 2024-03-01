@@ -13,8 +13,8 @@ button {
 }
 
 button[disabled] {
-  background-color: #ccc;
-  cursor: not-allowed;
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
 }
 
 button[type="reset"] {
