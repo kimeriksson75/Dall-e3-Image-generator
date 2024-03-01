@@ -67,7 +67,7 @@ form {
   flex-wrap: wrap;
   align-items: center;
   position: relative;
-  gap: 4px 12px;
+  gap: 4px 8px;
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
