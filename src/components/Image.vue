@@ -1,12 +1,13 @@
 <template>
-  <div v-if="image.image" class="image-wrapper">
+  <Loader class="loader" :isLoading="!isLoaded" />
+  <div class="image-wrapper">
     <v-lazy-image
       :class="`${isLoaded ? '' : 'v-lazy-image-load'}`"
       :src="image.image"
-      src-placeholder="https://placehold.co/1024x1024"
+      src-placeholder="https://placehold.co/1024x1024/888888/ffffff?text=Loading"
       :onload="onImgLoaded"
     />
-    <div v-if="isLoaded">
+    <div v-if="image?.image && isLoaded">
       <button @click="removeImage" class="remove-image">X</button>
       <p>DALL·E3</p>
       <q
@@ -17,7 +18,6 @@
         <p>{{ image.revised_prompt }}</p>
         <a :href="image.image" target="_blank">Image link:</a>
       </details>
-      <Loader :isLoading="!isLoaded" />
     </div>
   </div>
 </template>
@@ -47,13 +47,15 @@ export default {
       immediate: true,
       handler() {
         console.log("Image changed", this.image);
-        this.isLoaded = false;
+        if (this.image?.image) {
+          this.isLoaded = false;
+        }
       },
     },
   },
   data() {
     return {
-      isLoaded: false,
+      isLoaded: true,
     };
   },
   methods: {
@@ -73,6 +75,12 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .image-wrapper {
   position: relative;
   transition: all 0.3s ease-in-out;

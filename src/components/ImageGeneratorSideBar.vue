@@ -125,7 +125,7 @@ export default {
 .content {
   position: relative;
   display: flex;
-  top: 20px;
+  top: 22px;
   left: 8px;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;

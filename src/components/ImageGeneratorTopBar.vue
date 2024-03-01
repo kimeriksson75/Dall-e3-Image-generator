@@ -5,6 +5,7 @@
     >
     <input
       type="search"
+      name="q"
       id="description"
       placeholder="e.g. oceans of love"
       required
