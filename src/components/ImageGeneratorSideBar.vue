@@ -41,6 +41,7 @@ export default {
   components: {
     ImageGallery,
   },
+  emits: ["generateImage", "setSelectedImage"],
   props: {
     isLoading: {
       type: Boolean,
@@ -139,7 +140,7 @@ export default {
 
   .gallery {
     padding: 12px;
-    min-width: 50vw;
+    // min-width: 50vw;
 
     transition: opacity 0.5s ease-out;
   }

@@ -45,12 +45,19 @@ export default {
     margin-bottom: 10px;
   }
   .gallery__images {
-    width: auto;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 4px;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(50px, 100%/4, max(50px, 100%/3)), 1fr)
+    );
+    @media screen and (min-width: 768px) {
+    }
     img {
-      width: 100%;
+      @media screen and (min-width: 768px) {
+        width: 200px;
+      }
       border-radius: 5px;
       cursor: pointer;
     }

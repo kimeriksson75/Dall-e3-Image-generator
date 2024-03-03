@@ -1,38 +1,36 @@
 <template>
   <Loader class="loader" :isLoading="!isLoaded" />
   <div class="image-wrapper">
-    <v-lazy-image
-      :class="`${isLoaded ? '' : 'v-lazy-image-load'}`"
-      :src="image.image"
-      src-placeholder="https://placehold.co/1024x1024/42b983/ffffff?text=Image+goes+here"
-      :onload="onImgLoaded"
-      :use-picture="false"
+    <img
+      :class="`v-image ${!isLoaded ? 'v-image-load' : 'v-image-loaded'}`"
+      v-on:load="onImgLoaded"
+      fluid
+      :src="currentImage.image"
+      :alt="currentImage.description"
     />
-    <div v-if="image?.image && isLoaded">
-      <button @click="removeImage" class="remove-image">X</button>
+    <div v-if="currentImage?.image && isLoaded">
+      <button @click="onRemoveImage" class="remove-image">X</button>
       <p>DALL·E3</p>
       <q
-        ><strong>{{ image?.description }}</strong></q
+        ><strong>{{ currentImage?.description }}</strong></q
       >
-      <details v-if="image.revised_prompt">
+      <details v-if="currentImage.revised_prompt">
         <summary>Revised prompt</summary>
-        <p>{{ image.revised_prompt }}</p>
-        <a :href="image.image" target="_blank">Image link:</a>
+        <p>{{ currentImage.revised_prompt }}</p>
+        <a :href="currentImage.image" target="_blank">Image link:</a>
       </details>
     </div>
   </div>
 </template>
 
 <script>
-import VLazyImage from "v-lazy-image";
 import Loader from "@/components/Loader.vue";
-
 export default {
   name: "ImageComponent",
   components: {
-    VLazyImage,
     Loader,
   },
+  emits: ["removeImage"],
   props: {
     image: {
       type: Object,
@@ -49,7 +47,8 @@ export default {
       handler() {
         console.log("Image changed", this.image);
         if (this.image?.image) {
-          this.isLoaded = false;
+          this.currentImage = this.image;
+          this.onImageLoading();
         }
       },
     },
@@ -57,6 +56,11 @@ export default {
   data() {
     return {
       isLoaded: true,
+      currentImage: {
+        image: "",
+        description: "",
+        revised_prompt: "",
+      },
     };
   },
   methods: {
@@ -65,10 +69,10 @@ export default {
       console.log("Image is loading!", this.isLoaded);
     },
     onImgLoaded() {
-      console.log("Image loaded", this.isLoaded);
       this.isLoaded = true;
+      console.log("Image loaded", this.isLoaded);
     },
-    removeImage() {
+    onRemoveImage() {
       // this.$store.dispatch("removeImage", this.image);
       this.$emit("removeImage", this.image);
     },
@@ -94,11 +98,36 @@ export default {
     margin-bottom: 8px;
     animation: fadeIn 0.3s ease-in-out;
   }
+  p {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
   q {
     word-wrap: break-word;
     font-size: 16px;
     font-style: italic;
+    font-weight: 200;
   }
+
+  details {
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 5px;
+    summary {
+      // list-style-position: outside;
+      // list-style-type: "▶";
+      // cursor: pointer;
+    }
+    p {
+      word-wrap: break-word;
+    }
+  }
+  details[open] > summary {
+    // list-style-type: "▼";
+  }
+
   button {
     position: absolute;
     top: 8px;
@@ -113,35 +142,18 @@ export default {
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
-
-  details {
-    margin-top: 8px;
-    padding: 12px 4px;
-    border-radius: 5px;
-    summary {
-      list-style-position: outside;
-      list-style-type: "▶";
-      cursor: pointer;
-    }
-    p {
-      word-wrap: break-word;
-    }
-  }
-  details[open] > summary {
-    list-style-type: "▼";
-  }
 }
-.v-lazy-image {
+.v-image {
   filter: opacity(0) brightness(200%) blur(10px);
   transition: filter 0.7s;
 }
 
-.v-lazy-image-load {
+.v-image-load {
   // fade to black
   filter: opacity(0) brightness(200%) blur(10px) !important;
   transition: filter 0.7s !important;
 }
-.v-lazy-image-loaded {
+.v-image-loaded {
   filter: opacity(1) brightness(100%) blur(0);
 }
 </style>

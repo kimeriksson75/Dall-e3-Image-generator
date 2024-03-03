@@ -23,6 +23,7 @@ import Loader from "@/components/Loader.vue";
 
 export default {
   name: "ImageGeneratorSideBar",
+  emits: ["generateImage"],
   components: {
     Loader,
   },
