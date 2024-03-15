@@ -45,10 +45,11 @@ export default {
     image: {
       immediate: true,
       handler() {
-        console.log("Image changed", this.image);
         if (this.image?.image) {
-          this.currentImage = this.image;
           this.onImageLoading();
+          setTimeout(() => {
+            this.currentImage = this.image;
+          }, 200);
         }
       },
     },
